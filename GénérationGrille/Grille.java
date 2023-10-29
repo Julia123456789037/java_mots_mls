@@ -1,4 +1,4 @@
-package projet_java.melo;
+package projet_java.melo.java_mots_mls.GénérationGrille;
 
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class Grille
 		placerMot();
 
 
-		renplirGrillr();
+		//renplirGrillr();
 
 		System.out.println ( "------------------------------------------------------------------------------" );
 		System.out.println ();
