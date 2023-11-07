@@ -1,0 +1,6 @@
+terminal
+feutre
+tableau
+papier
+trouse
+stylo

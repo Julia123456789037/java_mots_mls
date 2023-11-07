@@ -25,6 +25,7 @@ public class Grille
 	private int						nbMots;
 	private int						longueur;
 	private int						largeur;
+	private int						niveau;
 
 	/* -------------------------------------- */
 	/*            Constructeur                */
@@ -38,6 +39,30 @@ public class Grille
 	public Grille(String nomFich)
 	{
 		this.nomFichier = nomFich;
+		//this.niveau = null;
+		this.largeur = this.longueur = 10;
+		scaneur();
+		this.grilleMots = new char[this.longueur][this.largeur];
+		placerMot();
+
+
+		renplirGrillr();
+
+		System.out.println ( "------------------------------------------------------------------------------" );
+		System.out.println ();
+		System.out.println (toString());
+		System.out.println ();
+		System.out.println ( "------------------------------------------------------------------------------" );
+		System.out.println (getMotsATrouver());
+		System.out.println ( "------------------------------------------------------------------------------" );
+		System.out.println ();
+
+	}
+
+	public Grille(int niv)
+	{
+		this.niveau = niv;
+		this.nomFichier = "\ niv\ "  + niv + ".txt";
 		this.largeur = this.longueur = 10;
 		scaneur();
 		this.grilleMots = new char[this.longueur][this.largeur];
@@ -107,6 +132,7 @@ public class Grille
 		try
 		{
 			fr = new FileReader ( this.nomFichier );
+			
 			Scanner sc = new Scanner ( fr );
 
 			while ( sc.hasNextLine() && this.nbMots < 80  )
@@ -696,6 +722,8 @@ public class Grille
 	{
 		Grille        gril1, gril2, gril3;
 		gril1 = new Grille("texte.txt");
+
+		gril2 = new Grille(1);
 
 		System.out.println ();
 		
