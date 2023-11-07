@@ -62,7 +62,7 @@ public class Grille
 	public Grille(int niv)
 	{
 		this.niveau = niv;
-		this.nomFichier = "\ niv\ "  + niv + ".txt";
+		this.nomFichier = "niveau/niv" + niv + ".txt";
 		this.largeur = this.longueur = 10;
 		scaneur();
 		this.grilleMots = new char[this.longueur][this.largeur];
@@ -132,7 +132,6 @@ public class Grille
 		try
 		{
 			fr = new FileReader ( this.nomFichier );
-			
 			Scanner sc = new Scanner ( fr );
 
 			while ( sc.hasNextLine() && this.nbMots < 80  )
@@ -722,9 +721,10 @@ public class Grille
 	{
 		Grille        gril1, gril2, gril3;
 		gril1 = new Grille("texte.txt");
-
+/*
 		gril2 = new Grille(1);
-
+		gril3 = new Grille(5);
+ */
 		System.out.println ();
 		
 
