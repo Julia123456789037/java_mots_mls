@@ -42,11 +42,11 @@ public class Grille
 		//this.niveau = null;
 		this.largeur = this.longueur = 10;
 		scaneur();
-		this.grilleMots = new char[this.longueur][this.largeur];
+		this.grilleMots = new char[this.largeur][this.longueur];
 		placerMot();
 
 
-		renplirGrillr();
+		//renplirGrillr();
 
 		System.out.println ( "------------------------------------------------------------------------------" );
 		System.out.println ();
@@ -150,18 +150,18 @@ public class Grille
 		}
 		else if ( this.nbMots <= 20  )
 		{
-			this.longueur = 14;
+			this.longueur = 16;
 			this.largeur = 16;
 		}
 		else if ( this.nbMots <= 50  )
 		{
-			this.longueur = 30;
-			this.largeur = 30;
+			this.longueur = 31;
+			this.largeur = 31;
 		}
 		else if ( this.nbMots > 50  )
 		{
-			this.longueur = 50;
-			this.largeur = 30;
+			this.longueur = 51;
+			this.largeur = 31;
 		}
 	}
 
