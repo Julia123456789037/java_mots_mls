@@ -164,6 +164,79 @@ public class Grille
 			this.largeur = 31;
 		}
 	}
+	
+
+	/*-------------------------------------------------------------------- */
+    public void rangeArrayTail()
+    {
+        ArrayList<String>		tempo;
+        ArrayList<Integer>		tempInt;
+
+        tempInt = new ArrayList<Integer>();
+        tempo = new ArrayList<String>();
+
+        if ( ! this.motsATrouverComplet.isEmpty() )
+		{
+            System.out.println("----------------------------------------");
+            System.out.println(this.motsATrouverComplet);
+            this.motsATrouverComplet.toArray();
+            System.out.println(this.motsATrouverComplet);
+
+            System.out.println("----------------------------------------");
+
+            
+            for (int i = 0; i < this.motsATrouverComplet.size(); i++) 
+            {
+                tempInt.add( (Integer) this.motsATrouverComplet.get(1).length());
+            }
+            
+
+            
+		}
+		else 
+		{
+			System.out.println("liste vide");
+		}
+
+    }
+
+    public void rangeArrayAlpha()
+    {
+        ArrayList<String>		tempo;
+
+        if ( ! this.motsATrouverComplet.isEmpty() )
+		{
+            for (int i = 0; i < this.motsATrouverComplet.size(); i++) 
+            {
+                for (int j = 0; j < this.motsATrouverComplet.size(); j++) 
+                {
+                    this.motsATrouverComplet.get(0);
+                }
+            }
+		}
+		else 
+		{
+			System.out.println("liste vide");
+		}
+    }
+/* 
+    public void rangeArrayInt(ArrayList<Integer> tempo)
+    {
+        if ( ! tempo.isEmpty() )
+		{
+            System.out.println(tempo);
+            tempo.toArray();
+            System.out.println(tempo);
+		}
+		else 
+		{
+			System.out.println("liste vide");
+		}
+    }*/
+    /*-------------------------------------------------------------------- */
+
+
+
 
 	/**
      * Cette méthode vérifie les différentes directions où un mot peut être placé dans la grille.
@@ -274,7 +347,7 @@ public class Grille
 		}
 		for (int i = 0; i < mot.length(); i++) 
 		{
-			if ( grilleMots[ligne][colonne + i]  != mot.charAt(i) && grilleMots[ligne][colonne + i] != '\0' ) 
+			if ( this.grilleMots[ligne][colonne + i]  != mot.charAt(i) && this.grilleMots[ligne][colonne + i] != '\0' ) 
 			{
 				return false; // L'emplacement est déjà occupé.
 			}
@@ -295,9 +368,9 @@ public class Grille
 		{
 			for (int i = 0; i < mot.length(); i++) 
 			{
-				grilleMots[ligne][colonne + i] = mot.charAt(i);
+				this.grilleMots[ligne][colonne + i] = mot.charAt(i);
 			}
-			motsATrouverComplet.add(mot);
+			this.motsATrouverComplet.add(mot);
 		}
 	}
 
@@ -339,9 +412,9 @@ public class Grille
 		{
 			for (int i = 0; i < mot.length(); i++) 
 			{
-				grilleMots[ligne][colonne - i] = mot.charAt(i);
+				this.grilleMots[ligne][colonne - i] = mot.charAt(i);
 			}
-			motsATrouverComplet.add(mot);
+			this.motsATrouverComplet.add(mot);
 		}
 	}
 
@@ -370,7 +443,7 @@ public class Grille
 			System.out.println(grilleMots[ligne + i][colonne]);
 			System.out.println(mot.charAt(i));
  */
-			if ( grilleMots[ligne + i][colonne]  != mot.charAt(i) && grilleMots[ligne + i][colonne]  != '\0' ) 
+			if ( this.grilleMots[ligne + i][colonne]  != mot.charAt(i) && this.grilleMots[ligne + i][colonne]  != '\0' ) 
 			{
 				return false; // L'emplacement est déjà occupé.
 			}
@@ -391,9 +464,9 @@ public class Grille
 		{
 			for (int i = 0; i < mot.length(); i++) 
 			{
-				grilleMots[ligne + i][colonne] = mot.charAt(i);
+				this.grilleMots[ligne + i][colonne] = mot.charAt(i);
 			}
-			motsATrouverComplet.add(mot);
+			this.motsATrouverComplet.add(mot);
 		}
 	}
 
@@ -414,7 +487,7 @@ public class Grille
 
 		for (int i = 0; i < mot.length(); i++) 
 		{
-			if ( grilleMots[ligne - i][colonne] != mot.charAt(i) && grilleMots[ligne - i][colonne] != '\0' ) 
+			if ( this.grilleMots[ligne - i][colonne] != mot.charAt(i) && this.grilleMots[ligne - i][colonne] != '\0' ) 
 			{
 				return false; // L'emplacement est déjà occupé.
 			}
@@ -435,9 +508,9 @@ public class Grille
 		{
 			for (int i = 0; i < mot.length(); i++) 
 			{
-				grilleMots[ligne - i][colonne] = mot.charAt(i);
+				this.grilleMots[ligne - i][colonne] = mot.charAt(i);
 			}
-			motsATrouverComplet.add(mot);
+			this.motsATrouverComplet.add(mot);
 		}
 	}
 
@@ -454,14 +527,14 @@ public class Grille
 	 */
 	public boolean peutPlacerDiagHG_BD(String mot, int ligne, int colonne) 
 	{
-		if (ligne + mot.length() > grilleMots.length || colonne + mot.length() > grilleMots[0].length) 
+		if (ligne + mot.length() > this.grilleMots.length || colonne + mot.length() > this.grilleMots[0].length) 
 		{
 			return false; // Le mot dépasse les limites du tableau.
 		}
 
 		for (int i = 0; i < mot.length(); i++) 
 		{
-			if ( grilleMots[ligne + i][colonne + i]  != mot.charAt(i) && grilleMots[ligne + i][colonne + i] != '\0' ) 
+			if ( this.grilleMots[ligne + i][colonne + i]  != mot.charAt(i) && this.grilleMots[ligne + i][colonne + i] != '\0' ) 
 			{
 				return false; // L'emplacement est déjà occupé.
 			}
@@ -482,9 +555,9 @@ public class Grille
 		{
 			for (int i = 0; i < mot.length(); i++) 
 			{
-				grilleMots[ligne + i][colonne + i] = mot.charAt(i);
+				this.grilleMots[ligne + i][colonne + i] = mot.charAt(i);
 			}
-			motsATrouverComplet.add(mot);
+			this.motsATrouverComplet.add(mot);
 		}
 	}
 
@@ -506,7 +579,7 @@ public class Grille
 
 		for (int i = 0; i < mot.length(); i++) 
 		{
-			if ( grilleMots[ligne - i][colonne - i]  != mot.charAt(i) && grilleMots[ligne - i][colonne - i] != '\0' ) 
+			if ( this.grilleMots[ligne - i][colonne - i]  != mot.charAt(i) && this.grilleMots[ligne - i][colonne - i] != '\0' ) 
 			{
 				return false; // L'emplacement est déjà occupé.
 			}
@@ -527,9 +600,9 @@ public class Grille
 		{
 			for (int i = 0; i < mot.length(); i++) 
 			{
-				grilleMots[ligne - i][colonne - i] = mot.charAt(i);
+				this.grilleMots[ligne - i][colonne - i] = mot.charAt(i);
 			}
-			motsATrouverComplet.add(mot);
+			this.motsATrouverComplet.add(mot);
 		}
 	}
 
@@ -543,14 +616,14 @@ public class Grille
 	 */
 	public boolean peutPlacerDiagHD_BG(String mot, int ligne, int colonne) 
 	{
-		if (ligne + mot.length() > grilleMots.length ||  colonne - mot.length() < 0) 
+		if (ligne + mot.length() > this.grilleMots.length ||  colonne - mot.length() < 0) 
 		{
 			return false; // Le mot dépasse les limites du tableau.
 		}
 
 		for (int i = 0; i < mot.length(); i++) 
 		{
-			if ( grilleMots[ligne + i][colonne - i]  != mot.charAt(i) && grilleMots[ligne + i][colonne - i] != '\0' ) 
+			if ( this.grilleMots[ligne + i][colonne - i]  != mot.charAt(i) && grilleMots[ligne + i][colonne - i] != '\0' ) 
 			{
 				return false; // L'emplacement est déjà occupé.
 			}
@@ -571,9 +644,9 @@ public class Grille
 		{
 			for (int i = 0; i < mot.length(); i++) 
 			{
-				grilleMots[ligne + i][colonne - i] = mot.charAt(i);
+				this.grilleMots[ligne + i][colonne - i] = mot.charAt(i);
 			}
-			motsATrouverComplet.add(mot);
+			this.motsATrouverComplet.add(mot);
 		}
 	}
 
@@ -588,14 +661,14 @@ public class Grille
 	 */
 	public boolean peutPlacerDiagBG_HD(String mot, int ligne, int colonne)
 	{
-		if (ligne - mot.length() < 0 || colonne + mot.length() > grilleMots[0].length)
+		if (ligne - mot.length() < 0 || colonne + mot.length() > this.grilleMots[0].length)
 		{
 			return false; // Le mot dépasse les limites du tableau.
 		}
 
 		for (int i = 0; i < mot.length(); i++)
 		{
-			if ( mot.charAt(i) != grilleMots[ligne - i][colonne + i] && grilleMots[ligne - i][colonne + i] != '\0' )
+			if ( mot.charAt(i) != this.grilleMots[ligne - i][colonne + i] && this.grilleMots[ligne - i][colonne + i] != '\0' )
 			{
 				return false; // L'emplacement est déjà occupé.
 			}
@@ -617,9 +690,9 @@ public class Grille
 		{
 			for (int i = 0; i < mot.length(); i++) 
 			{
-				grilleMots[ligne - i][colonne + i] = mot.charAt(i);
+				this.grilleMots[ligne - i][colonne + i] = mot.charAt(i);
 			}
-			motsATrouverComplet.add(mot);
+			this.motsATrouverComplet.add(mot);
 		}
 	}
 
@@ -634,7 +707,7 @@ public class Grille
 			{
 				if ( !estlettre(grilleMots [i][j]) )
 				{
-					grilleMots [i][j] = (char) ('A' + ( Math.random() * 26 ));
+					this.grilleMots [i][j] = (char) ('A' + ( Math.random() * 26 ));
 				}	
 			}
 		}
