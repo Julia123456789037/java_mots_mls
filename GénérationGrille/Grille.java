@@ -46,7 +46,7 @@ public class Grille
 		placerMot();
 
 
-		//renplirGrillr();
+		renplirGrillr();
 
 		System.out.println ( "------------------------------------------------------------------------------" );
 		System.out.println ();
@@ -69,7 +69,7 @@ public class Grille
 		placerMot();
 
 
-		//renplirGrillr();
+		renplirGrillr();
 
 		System.out.println ( "------------------------------------------------------------------------------" );
 		System.out.println ();
