@@ -4,6 +4,7 @@ package projet_java.melo.java_mots_mls.GénérationGrille.ihm;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 //import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -85,7 +86,7 @@ public class BarreNiv extends JMenuBar
 	{
 		this.framePrinc.dispose();
 		if (b2Frame) { this.frameAnc.dispose();}
-		new MenuLibre(this.ctrl);
+		new MenuLibre(this.ctrl, new ArrayList<String>());
 	}
 
 	public void retourAccueil() 

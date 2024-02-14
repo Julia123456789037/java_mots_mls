@@ -2,6 +2,7 @@ package projet_java.melo.java_mots_mls.GénérationGrille.ihm;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -73,7 +74,7 @@ public class Menu extends JFrame implements ActionListener
 		if (e.getSource() == this.libre)  
 		{
 			System.out.println("mode libre");
-			new MenuLibre(ctrl);
+			new MenuLibre(ctrl, new ArrayList<String>());
 			this.dispose();
 		} 
 

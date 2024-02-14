@@ -36,7 +36,6 @@ public class GrilleBout extends JPanel implements ActionListener
 			}
 		}
 
-
 		// Activation des Controles
 		for (int i = 0; i < this.gril.length; i++) {
 			for (int j = 0; j < this.gril[i].length; j++) {

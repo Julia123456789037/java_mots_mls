@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 
 import projet_java.melo.java_mots_mls.GénérationGrille.Controleur;
 
-public class MenuLibre extends JFrame implements ActionListener 
+public class confirDeb extends JFrame implements ActionListener 
 {
 	private Controleur			ctrl;
 	private ArrayList<Button>	lstBout;
@@ -33,21 +33,17 @@ public class MenuLibre extends JFrame implements ActionListener
 	private JPanel				haut;
 	private JPanel				centre;
 	private JPanel				bas;
-	private int					selectVL;
 
-	public MenuLibre( Controleur ctr, ArrayList<String>	lstMot ) 
+	public confirDeb( Controleur ctr, ArrayList<String> ltMot ) 
 	{
 		this.ctrl = ctr;
-		this.selectVL = 0;
 		this.setTitle("2 Boutons");
-		this.setSize    (800,500);
-		this.setLocation(50,50);
+		this.setSize    (500,500);
+		this.setLocation(250,250);
 		this.getContentPane().setBackground(new Color(222,222,222));
 		this.setLayout (new BorderLayout(4,1));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.lstMots = new ArrayList<String>();
-		if ( ! lstMot.isEmpty() ) { for (String st : lstMot) { this.lstMots.add(st); } }
-		
+		this.lstMots = ltMot;
 
 		// Création des Controles
 		this.haut		= new JPanel();
@@ -73,7 +69,6 @@ public class MenuLibre extends JFrame implements ActionListener
 		this.quitter.addActionListener( this );
 		this.validerL.addActionListener( this );
 		this.affMots.setEditable(false);
-		if ( ! this.lstMots.isEmpty() ) { for (String st : this.lstMots) { this.affMots.append(st + "; "); } }
 
 
 		// Positionnement des Controles
@@ -101,11 +96,7 @@ public class MenuLibre extends JFrame implements ActionListener
 		if (e.getSource() == this.validerM)  {this.verifMot();} 
 		if (e.getSource() == this.retour)  {new Menu(ctrl);this.dispose();} 
 		if (e.getSource() == this.quitter)  {this.dispose();} 
-		if (e.getSource() == this.validerL)  
-		{
-			System.out.println("page suivante");
-			if (this.lstMots.isEmpty()){this.attent3.setText("Veillez rentez au moin un mot.");}
-		} 
+		if (e.getSource() == this.validerL)  {System.out.println("page suivante");} 
 	}
 
 	private boolean verifMot()
@@ -131,21 +122,10 @@ public class MenuLibre extends JFrame implements ActionListener
 		if (tempo.equalsIgnoreCase(""))
 		{
 			this.attent3.setText("Veillez écrire un mot.");
-			return false; 
-		}
-		if (this.lstMots.size() >= 85)
-		{
-			this.attent3.setText("Vous posséder actuellement 85 mot, ceci était ma limite, veiller valider la liste.");
-			this.selectVL = this.selectVL + 1;
-			return false;
-		}
-		if (this.selectVL == 3) 
-		{
-			new confirDeb(ctrl, lstMots);
-			this.dispose();
+				return false; 
 		}
 		
-		this.lstMots.add(tempo);
+		lstMots.add(tempo);
 		this.affMots.append(tempo + "; ");
 		return true;
 	}
