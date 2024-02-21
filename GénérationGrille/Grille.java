@@ -274,11 +274,14 @@ public class Grille
 		int tempo;
 		int col;
 		int lig;
+		int cpt;
+		cpt = 0;
 
 		this.motsATrouverComplet = new ArrayList<String>();
 		
 		//Random random = new Random();
-		while ( ! motsATrouverAvant.isEmpty()) {
+		while ( ! motsATrouverAvant.isEmpty() && cpt < 5) {
+			cpt++;
 			for (String mot : motsATrouverAvant) 
 			{
 				ArrayList<Integer>		casPossibleMot;
