@@ -1,4 +1,4 @@
-package projet_java.melo.java_mots_mls.GénérationGrille.ihm;
+package melo.java_mots_mls.GénérationGrille.ihm;
 
 
 import java.awt.*;
@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import projet_java.melo.java_mots_mls.GénérationGrille.Controleur;
+import melo.java_mots_mls.GénérationGrille.Controleur;
 
 public class MenuLibre extends JFrame implements ActionListener 
 {
@@ -74,7 +74,7 @@ public class MenuLibre extends JFrame implements ActionListener
 		this.validerL.addActionListener( this );
 		this.affMots.setEditable(false);
 		if ( ! this.lstMots.isEmpty() ) { for (String st : this.lstMots) { this.affMots.append(st + "; "); } }
-
+		this.attent3.setForeground(new Color(240,0,34));
 
 		// Positionnement des Controles
 		this.haut.add(this.attent1);
@@ -105,6 +105,10 @@ public class MenuLibre extends JFrame implements ActionListener
 		{
 			System.out.println("page suivante");
 			if (this.lstMots.isEmpty()){this.attent3.setText("Veillez rentez au moin un mot.");}
+			else{
+				if (this.lstMots.size() < 5) {this.attent3.setText("Veillez rentez au moin 5 mot.");}
+				else { new Jeux(ctrl, lstMots);/*  this.dispose();*/}
+			}
 		} 
 	}
 

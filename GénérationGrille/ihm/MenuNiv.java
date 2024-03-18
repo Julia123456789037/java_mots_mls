@@ -1,4 +1,4 @@
-package projet_java.melo.java_mots_mls.GénérationGrille.ihm;
+package melo.java_mots_mls.GénérationGrille.ihm;
 
 
 import java.awt.*;
@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import projet_java.melo.java_mots_mls.GénérationGrille.Controleur;
+import melo.java_mots_mls.GénérationGrille.Controleur;
 
 public class MenuNiv extends JFrame implements ActionListener 
 {

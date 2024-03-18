@@ -1,4 +1,4 @@
-package projet_java.melo.java_mots_mls.GénérationGrille.ihm;
+package melo.java_mots_mls.GénérationGrille.ihm;
 
 
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import projet_java.melo.java_mots_mls.GénérationGrille.Controleur;
+import melo.java_mots_mls.GénérationGrille.Controleur;
 
 public class GrilleBout extends JPanel implements ActionListener 
 {

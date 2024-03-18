@@ -1,4 +1,4 @@
-package projet_java.melo.java_mots_mls.GénérationGrille.ihm;
+package melo.java_mots_mls.GénérationGrille.ihm;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -8,20 +8,24 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import projet_java.melo.java_mots_mls.GénérationGrille.Controleur;
+import melo.java_mots_mls.GénérationGrille.Controleur;
+import melo.java_mots_mls.GénérationGrille.Grille;
+
 
 public class Jeux extends JFrame
 {
 	private Controleur			ctrl;
 	private GrilleBout			grill;
 	private char[][]			tabL;
-	private ArrayList<String>	lstMots;
+	private ArrayList<String>	lstMots;		 ² 
+	private Grille 				jeu;
 
 
-	public Jeux( Controleur ctr, char[][] tab, ArrayList<String> lstMot ) 
+	public Jeux( Controleur ctr, ArrayList<String> lstMot ) 
 	{
 		this.ctrl = ctr;
-		this.tabL = tab;
+		this.jeu = new Grille(lstMot);
+		this.tabL = this.jeu.getTab();
 		this.lstMots = lstMot;
 		this.setTitle("Jeux");
 		this.setSize    (1200,500);

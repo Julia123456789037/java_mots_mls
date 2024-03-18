@@ -1,4 +1,4 @@
-package projet_java.melo.java_mots_mls.GénérationGrille;
+package melo.java_mots_mls.GénérationGrille;
 
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -42,6 +42,28 @@ public class Grille
 		//this.niveau = null;
 		this.largeur = this.longueur = 10;
 		scaneur();
+		this.grilleMots = new char[this.largeur][this.longueur];
+		placerMot();
+
+
+		renplirGrillr();
+
+		System.out.println ( "------------------------------------------------------------------------------" );
+		System.out.println ();
+		System.out.println (toString());
+		System.out.println ();
+		System.out.println ( "------------------------------------------------------------------------------" );
+		System.out.println (getMotsATrouver());
+		System.out.println ( "------------------------------------------------------------------------------" );
+		System.out.println ();
+
+	}
+
+	public Grille(ArrayList<String>	lstMots )
+	{
+		for (int i = 0; i < lstMots.size(); i++) { this.motsATrouverAvant.add(lstMots.get(i).toUpperCase()) ; }
+		this.nbMots = lstMots.size();
+		deterTaille();
 		this.grilleMots = new char[this.largeur][this.longueur];
 		placerMot();
 
@@ -142,7 +164,11 @@ public class Grille
 			fr.close();
 		}
 		catch (Exception e){ e.printStackTrace(); }
-	
+		deterTaille();	
+	}
+
+	private void deterTaille()
+	{
 		if ( this.nbMots <= 10  )
 		{
 			this.longueur = 11;
@@ -164,6 +190,8 @@ public class Grille
 			this.largeur = 31;
 		}
 	}
+
+	public char[][] getTab() { return grilleMots; }
 	
 
 	/*-------------------------------------------------------------------- */

@@ -1,4 +1,4 @@
-package projet_java.melo.java_mots_mls.GénérationGrille.ihm;
+package melo.java_mots_mls.GénérationGrille.ihm;
 
 
 import java.awt.FlowLayout;
@@ -12,7 +12,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import projet_java.melo.java_mots_mls.GénérationGrille.Controleur;
+import melo.java_mots_mls.GénérationGrille.Controleur;
 
 public class BarreNiv extends JMenuBar
 {
