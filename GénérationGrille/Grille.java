@@ -2,6 +2,7 @@ package melo.java_mots_mls.GénérationGrille;
 
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 
@@ -26,6 +27,7 @@ public class Grille
 	private int						longueur;
 	private int						largeur;
 	private int						niveau;
+	private HashMap<String, String> posMot;
 
 	/* -------------------------------------- */
 	/*            Constructeur                */
@@ -38,13 +40,13 @@ public class Grille
 	 */
 	public Grille(String nomFich)
 	{
-		this.nomFichier = nomFich;
+		this.nomFichier = "Joueur/" + nomFich + ".txt";
 		//this.niveau = null;
 		this.largeur = this.longueur = 10;
 		scaneur();
 		this.grilleMots = new char[this.largeur][this.longueur];
+		this.posMot = new HashMap<String, String>();
 		placerMot();
-
 
 		renplirGrillr();
 
@@ -56,7 +58,6 @@ public class Grille
 		System.out.println (getMotsATrouver());
 		System.out.println ( "------------------------------------------------------------------------------" );
 		System.out.println ();
-
 	}
 
 	public Grille(ArrayList<String>	lstMots )
@@ -88,10 +89,11 @@ public class Grille
 		this.largeur = this.longueur = 10;
 		scaneur();
 		this.grilleMots = new char[this.longueur][this.largeur];
+		this.posMot = new HashMap<String, String>();
 		placerMot();
 
 
-		renplirGrillr();
+		//renplirGrillr();
 
 		System.out.println ( "------------------------------------------------------------------------------" );
 		System.out.println ();
@@ -109,10 +111,10 @@ public class Grille
 	/* -------------------------------------- */
 
 	/**
-     * Accesseur pour obtenir la liste des mots à trouver.
-     * 
-     * @return Une chaîne de caractères contenant les mots à trouver.
-     */
+	 * Accesseur pour obtenir la liste des mots à trouver.
+	 * 
+	 * @return Une chaîne de caractères contenant les mots à trouver.
+	 */
 	public String getMotsATrouver()
 	{
 		String s;
@@ -141,9 +143,9 @@ public class Grille
 	/* -------------------------------------- */
 
 	/**
-     * Cette méthode lit un fichier pour extraire les mots à trouver.
-     * Elle configure également les dimensions de la grille en fonction du nombre de mots.
-     */
+	 * Cette méthode lit un fichier pour extraire les mots à trouver.
+	 * Elle configure également les dimensions de la grille en fonction du nombre de mots.
+	 */
 	private void scaneur()
 	{
 		this.motsATrouverAvant = new ArrayList<String>();
@@ -195,86 +197,83 @@ public class Grille
 	
 
 	/*-------------------------------------------------------------------- */
-    public void rangeArrayTail()
-    {
-        ArrayList<String>		tempo;
-        ArrayList<Integer>		tempInt;
+	public void rangeArrayTail()
+	{
+		ArrayList<String>		tempo;
+		ArrayList<Integer>		tempInt;
 
-        tempInt = new ArrayList<Integer>();
-        tempo = new ArrayList<String>();
+		tempInt = new ArrayList<Integer>();
+		tempo = new ArrayList<String>();
 
-        if ( ! this.motsATrouverComplet.isEmpty() )
+		if ( ! this.motsATrouverComplet.isEmpty() )
 		{
-            System.out.println("----------------------------------------");
-            System.out.println(this.motsATrouverComplet);
-            this.motsATrouverComplet.toArray();
-            System.out.println(this.motsATrouverComplet);
+			System.out.println("----------------------------------------");
+			System.out.println(this.motsATrouverComplet);
+			this.motsATrouverComplet.toArray();
+			System.out.println(this.motsATrouverComplet);
 
-            System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------");
 
-            
-            for (int i = 0; i < this.motsATrouverComplet.size(); i++) 
-            {
-                tempInt.add( (Integer) this.motsATrouverComplet.get(1).length());
-            }
-            
-
-            
+			
+			for (int i = 0; i < this.motsATrouverComplet.size(); i++) 
+			{
+				tempInt.add( (Integer) this.motsATrouverComplet.get(1).length());
+			}
 		}
 		else 
 		{
 			System.out.println("liste vide");
 		}
 
-    }
+	}
 
-    public void rangeArrayAlpha()
-    {
-        ArrayList<String>		tempo;
+	public void rangeArrayAlpha()
+	{
+		ArrayList<String>		tempo;
 
-        if ( ! this.motsATrouverComplet.isEmpty() )
+		if ( ! this.motsATrouverComplet.isEmpty() )
 		{
-            for (int i = 0; i < this.motsATrouverComplet.size(); i++) 
-            {
-                for (int j = 0; j < this.motsATrouverComplet.size(); j++) 
-                {
-                    this.motsATrouverComplet.get(0);
-                }
-            }
+			for (int i = 0; i < this.motsATrouverComplet.size(); i++) 
+			{
+				for (int j = 0; j < this.motsATrouverComplet.size(); j++) 
+				{
+					this.motsATrouverComplet.get(0);
+				}
+			}
 		}
 		else 
 		{
 			System.out.println("liste vide");
 		}
-    }
+	}
 /* 
-    public void rangeArrayInt(ArrayList<Integer> tempo)
-    {
-        if ( ! tempo.isEmpty() )
+	public void rangeArrayInt(ArrayList<Integer> tempo)
+	{
+		if ( ! tempo.isEmpty() )
 		{
-            System.out.println(tempo);
-            tempo.toArray();
-            System.out.println(tempo);
+			System.out.println(tempo);
+			tempo.toArray();
+			System.out.println(tempo);
 		}
 		else 
 		{
 			System.out.println("liste vide");
 		}
-    }*/
-    /*-------------------------------------------------------------------- */
+	}*/
+	/*-------------------------------------------------------------------- */
 
 
 
 
 	/**
-     * Cette méthode vérifie les différentes directions où un mot peut être placé dans la grille.
-     * Elle retourne une liste d'entiers correspondant aux directions possibles.
-     *
-     * @param mot Le mot à placer.
-     * @param lig La ligne de départ.
-     * @param col La colonne de départ.
-     * @return Une liste d'entiers représentant les directions possibles.
-     */
+	 * Cette méthode vérifie les différentes directions où un mot peut être placé dans la grille.
+	 * Elle retourne une liste d'entiers correspondant aux directions possibles.
+	 *
+	 * @param mot Le mot à placer.
+	 * @param lig La ligne de départ.
+	 * @param col La colonne de départ.
+	 * @return Une liste d'entiers représentant les directions possibles.
+	 */
 	public ArrayList<Integer> ferifMot(String mot, int lig, int col)
 	{
 		ArrayList<Integer>	tempo;
@@ -303,60 +302,73 @@ public class Grille
 		int tempo;
 		int col;
 		int lig;
+		int cpt;
+		cpt = 0;
 
 		this.motsATrouverComplet = new ArrayList<String>();
 		
 		//Random random = new Random();
+		while ( ! motsATrouverAvant.isEmpty() && cpt < 5) {
+			cpt++;
+			for (String mot : motsATrouverAvant) 
+			{
+				ArrayList<Integer>		casPossibleMot;
+				casPossibleMot = new ArrayList<Integer>();
 
-		for (String mot : motsATrouverAvant) 
-		{
-			ArrayList<Integer>		casPossibleMot;
-			casPossibleMot = new ArrayList<Integer>();
+				col =(int) ( ( Math.random() * this.largeur-1 )  );
+				lig =(int) ( ( Math.random() * this.longueur-1 )  );
 
-			col =(int) ( ( Math.random() * this.largeur-1 )  );
-			lig =(int) ( ( Math.random() * this.longueur-1 )  );
-
-			casPossibleMot = ferifMot( mot, lig, col );
-			
-			tempo = (int) ( ( Math.random() * casPossibleMot.size()  )  );
+				casPossibleMot = ferifMot( mot, lig, col );
+				
+				tempo = (int) ( ( Math.random() * casPossibleMot.size()  )  );
 
 
-			if ( ! casPossibleMot.isEmpty() )
-			{		
-				switch ( casPossibleMot.get(tempo))
-				{
-					case 1:
-						placerLigneGD(mot, lig, col);
-						break;
-					case 2:
-						placerLigneDG(mot, lig, col);
-						break;
-					case 3:
-						placerColoneBH(mot, lig, col);
-						break;
-					case 4:
-						placerColoneHB(mot, lig, col);
-						break;
-					case 5:
-						placerDiagHG_BD(mot, lig, col);
-						break;
-					case 6:
-						placerDiagBD_HG(mot, lig, col);
-						break;
-					case 7:
-						placerDiagHD_BG(mot, lig, col);
-						break;
-					case 8:
-						placerDiagBG_HD(mot, lig, col);
-						break;
-					default:
-						placerDiagHD_BG(mot, lig, col); // Direction par défaut : horizontal HautDroite jusqu'à BasGauche
-						break;
+				if ( ! casPossibleMot.isEmpty() )
+				{		
+					switch ( casPossibleMot.get(tempo))
+					{
+						case 1:
+							placerLigneGD(mot, lig, col);
+							motsATrouverAvant.remove(mot);
+							break;
+						case 2:
+							placerLigneDG(mot, lig, col);
+							motsATrouverAvant.remove(mot);
+							break;
+						case 3:
+							placerColoneBH(mot, lig, col);
+							motsATrouverAvant.remove(mot);
+							break;
+						case 4:
+							placerColoneHB(mot, lig, col);
+							motsATrouverAvant.remove(mot);
+							break;
+						case 5:
+							placerDiagHG_BD(mot, lig, col);
+							motsATrouverAvant.remove(mot);
+							break;
+						case 6:
+							placerDiagBD_HG(mot, lig, col);
+							motsATrouverAvant.remove(mot);
+							break;
+						case 7:
+							placerDiagHD_BG(mot, lig, col);
+							motsATrouverAvant.remove(mot);
+							break;
+						case 8:
+							placerDiagBG_HD(mot, lig, col);
+							motsATrouverAvant.remove(mot);
+							break;
+						default:
+							placerDiagHD_BG(mot, lig, col); // Direction par défaut : horizontal HautDroite jusqu'à BasGauche
+							motsATrouverAvant.remove(mot);
+							break;
+					}
 				}
 			}
-
 		}
 
+		
 	}
 
 	/**
@@ -392,6 +404,7 @@ public class Grille
 	 */
 	public void placerLigneGD(String mot, int ligne, int colonne) 
 	{
+		String tempo;
 		if (peutPlacerLigneGD(mot, ligne, colonne)) 
 		{
 			for (int i = 0; i < mot.length(); i++) 
@@ -399,6 +412,8 @@ public class Grille
 				this.grilleMots[ligne][colonne + i] = mot.charAt(i);
 			}
 			this.motsATrouverComplet.add(mot);
+			tempo = "(" + ligne + ":" + colonne + ")";
+			this.posMot.put(mot, tempo);
 		}
 	}
 
@@ -436,6 +451,7 @@ public class Grille
 	 */
 	public void placerLigneDG(String mot, int ligne, int colonne) 
 	{
+		String tempo;
 		if (peutPlacerLigneDG(mot, ligne, colonne)) 
 		{
 			for (int i = 0; i < mot.length(); i++) 
@@ -443,6 +459,8 @@ public class Grille
 				this.grilleMots[ligne][colonne - i] = mot.charAt(i);
 			}
 			this.motsATrouverComplet.add(mot);
+			tempo = "(" + ligne + ":" + colonne + ")";
+			this.posMot.put(mot, tempo);
 		}
 	}
 
@@ -470,7 +488,7 @@ public class Grille
 			/*
 			System.out.println(grilleMots[ligne + i][colonne]);
 			System.out.println(mot.charAt(i));
- */
+*/
 			if ( this.grilleMots[ligne + i][colonne]  != mot.charAt(i) && this.grilleMots[ligne + i][colonne]  != '\0' ) 
 			{
 				return false; // L'emplacement est déjà occupé.
@@ -488,6 +506,7 @@ public class Grille
 	 */
 	public void placerColoneHB(String mot, int ligne, int colonne) 
 	{
+		String tempo;
 		if (peutPlacerColoneHB(mot, ligne, colonne)) 
 		{
 			for (int i = 0; i < mot.length(); i++) 
@@ -495,6 +514,8 @@ public class Grille
 				this.grilleMots[ligne + i][colonne] = mot.charAt(i);
 			}
 			this.motsATrouverComplet.add(mot);
+			tempo = "(" + ligne + ":" + colonne + ")";
+			this.posMot.put(mot, tempo);
 		}
 	}
 
@@ -532,6 +553,7 @@ public class Grille
 	 */
 	public void placerColoneBH(String mot, int ligne, int colonne) 
 	{
+		String tempo;
 		if (peutPlacerColoneBH(mot, ligne, colonne)) 
 		{
 			for (int i = 0; i < mot.length(); i++) 
@@ -539,6 +561,8 @@ public class Grille
 				this.grilleMots[ligne - i][colonne] = mot.charAt(i);
 			}
 			this.motsATrouverComplet.add(mot);
+			tempo = "(" + ligne + ":" + colonne + ")";
+			this.posMot.put(mot, tempo);
 		}
 	}
 
@@ -579,6 +603,7 @@ public class Grille
 	 */
 	public void placerDiagHG_BD(String mot, int ligne, int colonne) 
 	{
+		String tempo;
 		if (peutPlacerDiagHG_BD(mot, ligne, colonne)) 
 		{
 			for (int i = 0; i < mot.length(); i++) 
@@ -586,6 +611,8 @@ public class Grille
 				this.grilleMots[ligne + i][colonne + i] = mot.charAt(i);
 			}
 			this.motsATrouverComplet.add(mot);
+			tempo = "(" + ligne + ":" + colonne + ")";
+			this.posMot.put(mot, tempo);
 		}
 	}
 
@@ -624,6 +651,7 @@ public class Grille
 	 */
 	public void placerDiagBD_HG(String mot, int ligne, int colonne) 
 	{
+		String tempo;
 		if (peutPlacerDiagBD_HG(mot, ligne, colonne)) 
 		{
 			for (int i = 0; i < mot.length(); i++) 
@@ -631,6 +659,8 @@ public class Grille
 				this.grilleMots[ligne - i][colonne - i] = mot.charAt(i);
 			}
 			this.motsATrouverComplet.add(mot);
+			tempo = "(" + ligne + ":" + colonne + ")";
+			this.posMot.put(mot, tempo);
 		}
 	}
 
@@ -668,6 +698,7 @@ public class Grille
 	 */
 	public void placerDiagHD_BG(String mot, int ligne, int colonne) 
 	{
+		String tempo;
 		if (peutPlacerDiagHD_BG(mot, ligne, colonne)) 
 		{
 			for (int i = 0; i < mot.length(); i++) 
@@ -675,6 +706,8 @@ public class Grille
 				this.grilleMots[ligne + i][colonne - i] = mot.charAt(i);
 			}
 			this.motsATrouverComplet.add(mot);
+			tempo = "(" + ligne + ":" + colonne + ")";
+			this.posMot.put(mot, tempo);
 		}
 	}
 
@@ -714,6 +747,7 @@ public class Grille
 	 */
 	public void placerDiagBG_HD(String mot, int ligne, int colonne) 
 	{
+		String tempo;
 		if (peutPlacerDiagBG_HD(mot, ligne, colonne)) 
 		{
 			for (int i = 0; i < mot.length(); i++) 
@@ -721,12 +755,14 @@ public class Grille
 				this.grilleMots[ligne - i][colonne + i] = mot.charAt(i);
 			}
 			this.motsATrouverComplet.add(mot);
+			tempo = "(" + ligne + ":" + colonne + ")";
+			this.posMot.put(mot, tempo);
 		}
 	}
 
 	/**
-     * Cette méthode remplit la grille avec des lettres aléatoires.
-     */
+	 * Cette méthode remplit la grille avec des lettres aléatoires.
+	 */
 	private void renplirGrillr()
 	{
 		for (int i = 0; i < this.longueur; i++) 
@@ -742,11 +778,11 @@ public class Grille
 	}
 
 	/**
-     * Cette méthode vérifie si un caractère est une lettre.
-     *
-     * @param c Le caractère à vérifier.
-     * @return true si c'est une lettre, sinon false.
-     */
+	 * Cette méthode vérifie si un caractère est une lettre.
+	 *
+	 * @param c Le caractère à vérifier.
+	 * @return true si c'est une lettre, sinon false.
+	 */
 	private boolean estlettre(char c)
 	{
 		if ( c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' )
@@ -821,12 +857,14 @@ public class Grille
 	public static void main(String[] argv)
 	{
 		Grille        gril1, gril2, gril3;
-		gril1 = new Grille("texte.txt");
+		//gril1 = new Grille("texte.txt");
 /*
 		gril2 = new Grille(1);
 		gril3 = new Grille(5);
- */
+*/
 		System.out.println ();
+
+		gril2 = new Grille(5);
 		
 
 	}
